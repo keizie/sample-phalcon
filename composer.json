@@ -2,7 +2,8 @@
     "name": "trial/sample",
     "description": "trial sample",
     "require-dev": {
-        "phalcon/ide-stubs": "^4.1"
+        "phalcon/ide-stubs": "^4.1",
+        "phalcon/devtools": "^4.0"
     },
     "require": {
         "phalcon/cphalcon": "^4.1"

@@ -16,3 +16,5 @@ RUN apt-get update && apt-get install -y --no-install-recommends unzip
 RUN pecl install phalcon \
     && echo "extension=psr.so" > /usr/local/etc/php/conf.d/pecl-psr.ini \
     && echo "extension=phalcon.so" > /usr/local/etc/php/conf.d/pecl-phalcon.ini
+
+RUN docker-php-ext-install mysqli pdo_mysql
