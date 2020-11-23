@@ -1,0 +1,193 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d32d240406b695dedc3c3b047de60956",
+    "packages": [
+        {
+            "name": "phalcon/cphalcon",
+            "version": "v4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/cphalcon.git",
+                "reference": "81561d8abd33449458c99873d2ddaeaa7832ebd0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/cphalcon/zipball/81561d8abd33449458c99873d2ddaeaa7832ebd0",
+                "reference": "81561d8abd33449458c99873d2ddaeaa7832ebd0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2 <8.0"
+            },
+            "provide": {
+                "psr/cache": "^1.0",
+                "psr/container": "^1.0",
+                "psr/event-dispatcher": "^0.7.0",
+                "psr/event-dispatcher-message": "^0.6.0",
+                "psr/event-dispatcher-task": "^0.6.0",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0",
+                "psr/http-message": "^1.0",
+                "psr/http-server-handler": "^1.0",
+                "psr/http-server-middleware": "^1.0",
+                "psr/link": "^1.0",
+                "psr/log": "^1.1",
+                "psr/simple-cache": "^1.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "^4.0",
+                "codeception/module-apc": "^1.0.0",
+                "codeception/module-asserts": "^1.0.0",
+                "codeception/module-cli": "^1.0.0",
+                "codeception/module-db": "^1.0.0",
+                "codeception/module-filesystem": "^1.0.0",
+                "codeception/module-phalcon4": "^1.0.3",
+                "codeception/module-redis": "^1.0.0",
+                "ext-apcu": "*",
+                "ext-dom": "*",
+                "ext-gd": "*",
+                "ext-iconv": "*",
+                "ext-igbinary": "*",
+                "ext-imagick": "*",
+                "ext-intl": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-msgpack": "*",
+                "ext-pdo": "*",
+                "ext-psr": "^0.7|^1.0",
+                "ext-redis": "*",
+                "ext-sqlite3": "*",
+                "ext-xml": "*",
+                "friendsofphp/php-cs-fixer": "~2.0",
+                "mustache/mustache": "^2.12",
+                "phpunit/phpunit": "^8.5",
+                "predis/predis": "^1.1",
+                "squizlabs/php_codesniffer": "^3.4",
+                "twig/twig": "~1.36",
+                "vlucas/phpdotenv": "^2.5"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalcon.io",
+                    "homepage": "https://phalcon.io/en/team"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/phalcon/cphalcon/graphs/contributors"
+                }
+            ],
+            "description": "Phalcon is an open source web framework delivered as a C extension for the PHP language providing high performance and lower resource consumption.",
+            "keywords": [
+                "PSR-11",
+                "PSR-4",
+                "extension",
+                "framework",
+                "high load",
+                "mvc",
+                "phalcon",
+                "psr-13",
+                "psr-14",
+                "psr-15",
+                "psr-16",
+                "psr-17",
+                "psr-18",
+                "psr-3",
+                "psr-7"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/phalcon",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/phalcon",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-10-31T15:56:34+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "phalcon/ide-stubs",
+            "version": "v4.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/ide-stubs.git",
+                "reference": "77384e4f42542f11b065b2a860b9bca2ea20ad5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/ide-stubs/zipball/77384e4f42542f11b065b2a860b9bca2ea20ad5a",
+                "reference": "77384e4f42542f11b065b2a860b9bca2ea20ad5a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.0"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "3.*",
+                "vimeo/psalm": "^3.4"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Phalcon Team",
+                    "email": "team@phalcon.io",
+                    "homepage": "https://phalcon.io/en-us/team"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/phalcon/ide-stubs/graphs/contributors"
+                }
+            ],
+            "description": "The most complete Phalcon Framework IDE stubs library which enables autocompletion in modern IDEs.",
+            "homepage": "https://phalcon.io",
+            "keywords": [
+                "Devtools",
+                "Eclipse",
+                "autocomplete",
+                "ide",
+                "netbeans",
+                "phalcon",
+                "phpstorm",
+                "stub",
+                "stubs"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/phalcon",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/phalcon",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-11-13T10:58:11+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
+}
