@@ -66,7 +66,7 @@ class Order extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
-    public function beforeSave()
+    public function beforeValidation()
     {
         if (!$this->oid) {
             // 12글자 중복이 불가능한 임의의 영문 대문자, 숫자 조합

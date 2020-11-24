@@ -14,7 +14,7 @@ return new \Phalcon\Config([
         'username'    => 'sample',
         'password'    => 'sample',
         'dbname'      => 'sample',
-        'charset'     => 'utf8',
+        'charset'     => 'utf8mb4',
     ],
     'application' => [
         'appDir'         => APP_PATH . '/',
