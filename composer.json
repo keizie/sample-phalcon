@@ -7,5 +7,17 @@
     },
     "require": {
         "phalcon/cphalcon": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": [
+                "app/models/",
+                "app/library/",
+                "app/controllers/"
+            ],
+            "Sample\\Controller\\": [
+                "app/controllers/"
+            ]
+        }
     }
 }

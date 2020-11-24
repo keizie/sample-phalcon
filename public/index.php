@@ -5,6 +5,8 @@ use Phalcon\Di\FactoryDefault;
 
 error_reporting(E_ALL);
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
