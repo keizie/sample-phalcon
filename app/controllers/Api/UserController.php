@@ -14,21 +14,29 @@ class UserController extends \Phalcon\Mvc\Controller
      */
     public function createAction()
     {
-        $name = $this->request->getPost('name', 'string');
-        $nickname = $this->request->getPost('nickname', 'string');
-        $password = $this->request->getPost('password', 'string', '');
-        $password_again = $this->request->getPost('password2', 'string', '');
-        $cellphone = $this->request->getPost('cellphone', 'string');
+        $name = $this->request->getPost('name', 'trim');
+        $nickname = $this->request->getPost('nickname', 'trim');
+        $password = $this->request->getPost('password', 'trim', '');
+        $password_again = $this->request->getPost('password2', 'trim', '');
+        $cellphone = $this->request->getPost('cellphone', 'trim');
         $email = $this->request->getPost('email', 'email');
-        $gender = $this->request->getPost('gender', 'string');
+        $gender = $this->request->getPost('gender', 'trim');
 
-        $password = trim($password);
-        $password_again = trim($password_again);
         if (!User::passwordSanity($password)
             || strcmp($password, $password_again) !== 0
         ) {
             $this->response->setStatusCode(400, 'Bad Request');
             return $this->response->setJsonContent(['status' => 'fail', 'message' => 'wrong password']);
+        }
+
+        $old_user = User::findFirst([
+            'conditions' => 'email = :email:',
+            'bind' => ['email' => $email],
+            'bindTypes' => ['email' => \Phalcon\Db\Column::BIND_PARAM_STR]
+        ]);
+        if ($old_user) {
+            $this->response->setStatusCode(400, 'Bad Request');
+            return $this->response->setJsonContent(['status' => 'fail', 'message' => 'email occupied']);
         }
 
         $user = new User();
@@ -74,6 +82,18 @@ class UserController extends \Phalcon\Mvc\Controller
             $this->response->setStatusCode(400, 'Bad Request');
             return $this->response->setJsonContent(['status' => 'fail', 'message' => 'wrong user']);
         }
+
+        $user = User::findFirst("user_id = {$user_id}");
+        if (!$user) {
+            $this->response->setStatusCode(400, 'Bad Request');
+            return $this->response->setJsonContent(['status' => 'fail', 'message' => 'wrong user']);
+        }
+
+        if ($user->user_id != $this->session->get('user_id')) {
+            $this->response->setStatusCode(403, 'Forbidden');
+            return $this->response->setJsonContent(['status' => 'fail', 'message' => 'wrong user']);
+        }
+
         $orders = Order::find("user_id = {$user_id}");
         return $this->response->setJsonContent(['status' => 'ok', 'orders' => $orders ?: []]);
     }
