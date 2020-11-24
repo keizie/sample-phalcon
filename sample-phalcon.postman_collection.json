@@ -23,13 +23,91 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "회원 로그아웃",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:46241/api/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:36:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\"\n}"
+				}
+			]
 		},
 		{
 			"name": "회원 로그인(인증)",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "addr@email.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "0123456789Ab$",
+							"type": "text"
+						}
+					]
+				},
 				"url": {
 					"raw": "localhost:46241/api/auth/login",
 					"host": [
@@ -43,7 +121,162 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "회원 로그인(인증) (재차 시도한 경우를 구분하기 위해 user_id 표시)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "addr@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "0123456789Ab$",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:46241/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:44:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"user_id\": \"15\"\n}"
+				},
+				{
+					"name": "회원 로그인(인증)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "addr@email.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "0123456789Ab$",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:46241/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:44:39 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\"\n}"
+				}
+			]
 		},
 		{
 			"name": "회원 가입",
@@ -109,7 +342,200 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "회원 가입 (성공)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "ABCabcㅡㅜ사",
+									"description": "한글, 영문 대소문자만 허용",
+									"type": "text"
+								},
+								{
+									"key": "nickname",
+									"value": "dgfbfgb",
+									"description": "영문 소문자만 허용",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "0123456789Ab$",
+									"description": "영문 대문자, 영문 소문자, 특수 문자, 숫자 각 1개 이상씩 포함\n(특수문자는 지정되지 않아서 영숫자 제외 전부 나열함)",
+									"type": "text"
+								},
+								{
+									"key": "password2",
+									"value": "0123456789Ab$",
+									"description": "동일여부 검사",
+									"type": "text"
+								},
+								{
+									"key": "cellphone",
+									"value": "45h6rtn",
+									"description": "숫자",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "addr11@email.com",
+									"description": "이메일 형식",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "",
+									"description": "선택사항. 제약조건 없음",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:46241/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:43:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"user\": {\n        \"user_id\": \"16\",\n        \"name\": \"ABCabcㅡㅜ사\",\n        \"nickname\": \"dgfbfgb\",\n        \"cellphone\": \"456\",\n        \"email\": \"addr11@email.com\",\n        \"gender\": \"\"\n    }\n}"
+				},
+				{
+					"name": "회원 가입 (가입된 이메일)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "ABCabcㅡㅜ사",
+									"description": "한글, 영문 대소문자만 허용",
+									"type": "text"
+								},
+								{
+									"key": "nickname",
+									"value": "dgfbfgb",
+									"description": "영문 소문자만 허용",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "0123456789Ab$",
+									"description": "영문 대문자, 영문 소문자, 특수 문자, 숫자 각 1개 이상씩 포함\n(특수문자는 지정되지 않아서 영숫자 제외 전부 나열함)",
+									"type": "text"
+								},
+								{
+									"key": "password2",
+									"value": "0123456789Ab$",
+									"description": "동일여부 검사",
+									"type": "text"
+								},
+								{
+									"key": "cellphone",
+									"value": "45h6rtn",
+									"description": "숫자",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "addr@email.com",
+									"description": "이메일 형식",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "",
+									"description": "선택사항. 제약조건 없음",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:46241/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:44:02 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"message\": \"email occupied\"\n}"
+				}
+			]
 		},
 		{
 			"name": "여러 회원 목록 조회",
@@ -117,7 +543,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:46241/api/user?page=1&limit=5",
+					"raw": "localhost:46241/api/user?page=1&limit=5&email=com&name=cc",
 					"host": [
 						"localhost"
 					],
@@ -134,11 +560,87 @@
 						{
 							"key": "limit",
 							"value": "5"
+						},
+						{
+							"key": "email",
+							"value": "com"
+						},
+						{
+							"key": "name",
+							"value": "cc"
 						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "여러 회원 목록 조회",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:46241/api/user?page=1&limit=5&email=com&name=cc",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "email",
+									"value": "com"
+								},
+								{
+									"key": "name",
+									"value": "cc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:45:20 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"users\": [\n        {\n            \"user_id\": \"8\",\n            \"email\": \"addr_8@email.com\",\n            \"name\": \"aaABCabcㅡㅜ사cc\",\n            \"nickname\": \"dgfbfgb\",\n            \"last_order\": {\n                \"order_id\": \"174\",\n                \"user_id\": \"8\",\n                \"oid\": \"22C532011645\",\n                \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n                \"datetime_local\": \"2020-11-25 00:58:09\",\n                \"datetime_utc\": \"2020-11-24 15:58:09\",\n                \"datetime_timezone\": \"Asia/Seoul\"\n            }\n        },\n        {\n            \"user_id\": \"3\",\n            \"email\": \"addr_3@email.com\",\n            \"name\": \"aaABCabcㅡㅜ사bbcc\",\n            \"nickname\": \"dgfbfgb\",\n            \"last_order\": {\n                \"order_id\": \"198\",\n                \"user_id\": \"3\",\n                \"oid\": \"643018780297\",\n                \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n                \"datetime_local\": \"2020-11-25 00:58:12\",\n                \"datetime_utc\": \"2020-11-24 15:58:12\",\n                \"datetime_timezone\": \"Asia/Seoul\"\n            }\n        }\n    ]\n}"
+				}
+			]
 		},
 		{
 			"name": "단일 회원 상세 정보 조회",
@@ -158,7 +660,58 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "단일 회원 상세 정보 조회",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:46241/api/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:45:33 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"user\": {\n        \"user_id\": \"1\",\n        \"name\": \"aaABCabcㅡㅜ사bbcc\",\n        \"nickname\": \"dgfbfgb\",\n        \"cellphone\": \"456\",\n        \"email\": \"em_1@example.org\",\n        \"gender\": \"\"\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "단일 회원의 주문 목록 조회",
@@ -179,7 +732,134 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "단일 회원의 주문 목록 조회 (비로그인 혹은 타계정 조회 시도)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:46241/api/user/orders/1",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"user",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:48:20 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"fail\",\n    \"message\": \"wrong user\"\n}"
+				},
+				{
+					"name": "단일 회원의 주문 목록 조회 (성공)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:46241/api/user/orders/15",
+							"host": [
+								"localhost"
+							],
+							"port": "46241",
+							"path": [
+								"api",
+								"user",
+								"orders",
+								"15"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.19.4"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 24 Nov 2020 16:47:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.12"
+						},
+						{
+							"key": "Expires",
+							"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"ok\",\n    \"orders\": [\n        {\n            \"order_id\": \"11\",\n            \"user_id\": \"15\",\n            \"oid\": \"A09062594890\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-24 15:46:22\",\n            \"datetime_utc\": \"2020-11-24 15:46:22\",\n            \"datetime_timezone\": \"UTC\"\n        },\n        {\n            \"order_id\": \"33\",\n            \"user_id\": \"15\",\n            \"oid\": \"A26193890131\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-24 15:46:26\",\n            \"datetime_utc\": \"2020-11-24 15:46:26\",\n            \"datetime_timezone\": \"UTC\"\n        },\n        {\n            \"order_id\": \"41\",\n            \"user_id\": \"15\",\n            \"oid\": \"2A0375015445\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-24 15:46:26\",\n            \"datetime_utc\": \"2020-11-24 15:46:26\",\n            \"datetime_timezone\": \"UTC\"\n        },\n        {\n            \"order_id\": \"59\",\n            \"user_id\": \"15\",\n            \"oid\": \"ECC616730668\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-24 15:46:29\",\n            \"datetime_utc\": \"2020-11-24 15:46:29\",\n            \"datetime_timezone\": \"UTC\"\n        },\n        {\n            \"order_id\": \"76\",\n            \"user_id\": \"15\",\n            \"oid\": \"D3C323230843\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-24 15:46:32\",\n            \"datetime_utc\": \"2020-11-24 15:46:32\",\n            \"datetime_timezone\": \"UTC\"\n        },\n        {\n            \"order_id\": \"91\",\n            \"user_id\": \"15\",\n            \"oid\": \"424749438093\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-24 15:46:34\",\n            \"datetime_utc\": \"2020-11-24 15:46:34\",\n            \"datetime_timezone\": \"UTC\"\n        },\n        {\n            \"order_id\": \"104\",\n            \"user_id\": \"15\",\n            \"oid\": \"C42495184619\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-25 00:57:59\",\n            \"datetime_utc\": \"2020-11-24 15:57:59\",\n            \"datetime_timezone\": \"Asia/Seoul\"\n        },\n        {\n            \"order_id\": \"105\",\n            \"user_id\": \"15\",\n            \"oid\": \"491021896678\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-25 00:57:59\",\n            \"datetime_utc\": \"2020-11-24 15:57:59\",\n            \"datetime_timezone\": \"Asia/Seoul\"\n        },\n        {\n            \"order_id\": \"119\",\n            \"user_id\": \"15\",\n            \"oid\": \"D26082315966\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-25 00:58:02\",\n            \"datetime_utc\": \"2020-11-24 15:58:02\",\n            \"datetime_timezone\": \"Asia/Seoul\"\n        },\n        {\n            \"order_id\": \"145\",\n            \"user_id\": \"15\",\n            \"oid\": \"3D8292163345\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-25 00:58:05\",\n            \"datetime_utc\": \"2020-11-24 15:58:05\",\n            \"datetime_timezone\": \"Asia/Seoul\"\n        },\n        {\n            \"order_id\": \"153\",\n            \"user_id\": \"15\",\n            \"oid\": \"032330275527\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-25 00:58:06\",\n            \"datetime_utc\": \"2020-11-24 15:58:06\",\n            \"datetime_timezone\": \"Asia/Seoul\"\n        },\n        {\n            \"order_id\": \"163\",\n            \"user_id\": \"15\",\n            \"oid\": \"403869938694\",\n            \"product\": \"🎐📚🚉🌋🐤🎫☘🔐📬🥈🐽🎁⛄📓🌡🎣🏵📅🎱🌫📺🍍🌱⛲💈🌡📕🗃🌌🥗\",\n            \"datetime_local\": \"2020-11-25 00:58:08\",\n            \"datetime_utc\": \"2020-11-24 15:58:08\",\n            \"datetime_timezone\": \"Asia/Seoul\"\n        }\n    ]\n}"
+				}
+			]
 		}
 	],
 	"protocolProfileBehavior": {}
