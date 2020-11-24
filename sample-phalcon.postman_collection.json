@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "425a869c-7e30-4403-ae84-0d851ff66e23",
+		"name": "sample-phalcon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "회원 로그아웃",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:46241/api/auth/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "46241",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "회원 로그인(인증)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:46241/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "46241",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "회원 가입",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "ABCabcㅡㅜ사",
+							"description": "한글, 영문 대소문자만 허용",
+							"type": "text"
+						},
+						{
+							"key": "nickname",
+							"value": "dgfbfgb",
+							"description": "영문 소문자만 허용",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "0123456789Ab$",
+							"description": "영문 대문자, 영문 소문자, 특수 문자, 숫자 각 1개 이상씩 포함\n(특수문자는 지정되지 않아서 영숫자 제외 전부 나열함)",
+							"type": "text"
+						},
+						{
+							"key": "password2",
+							"value": "0123456789Ab$",
+							"description": "동일여부 검사",
+							"type": "text"
+						},
+						{
+							"key": "cellphone",
+							"value": "45h6rtn",
+							"description": "숫자",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "addr@email.com",
+							"description": "이메일 형식",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "",
+							"description": "선택사항. 제약조건 없음",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:46241/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "46241",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "여러 회원 목록 조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:46241/api/user?page=1&limit=5",
+					"host": [
+						"localhost"
+					],
+					"port": "46241",
+					"path": [
+						"api",
+						"user"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "단일 회원 상세 정보 조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:46241/api/user/1",
+					"host": [
+						"localhost"
+					],
+					"port": "46241",
+					"path": [
+						"api",
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "단일 회원의 주문 목록 조회",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:46241/api/user/orders/1",
+					"host": [
+						"localhost"
+					],
+					"port": "46241",
+					"path": [
+						"api",
+						"user",
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
