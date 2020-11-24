@@ -63,8 +63,8 @@ class User extends \Phalcon\Mvc\Model
             'name',
             new RegexValidator(
                 [
-                    'pattern' => '/^[a-zA-z\p{Hangul}]+$/',
-                    'message' => '한글, 영문 대소문자만 허용',
+                    'pattern' => '/^[a-zA-z\p{Hangul}]+$/u',
+                    'message' => '이름은 한글, 영문 대소문자만 허용합니다',
                 ]
             )
         );
@@ -74,7 +74,7 @@ class User extends \Phalcon\Mvc\Model
             new RegexValidator(
                 [
                     'pattern' => '/^[a-z]+$/',
-                    'message' => '영문 소문자만 허용',
+                    'message' => '별명은 영문 소문자만 허용합니다',
                 ]
             )
         );
@@ -84,7 +84,7 @@ class User extends \Phalcon\Mvc\Model
             new RegexValidator(
                 [
                     'pattern' => '/^[0-9]+$/',
-                    'message' => '숫자만 허용',
+                    'message' => '전화번호는 숫자만 허용합니다',
                 ]
             )
         );
@@ -94,7 +94,7 @@ class User extends \Phalcon\Mvc\Model
             new EmailValidator(
                 [
                     'model'   => $this,
-                    'message' => '이메일 형식만 허용',
+                    'message' => '이메일 형식이 맞지 않습니다',
                 ]
             )
         );
@@ -133,9 +133,9 @@ class User extends \Phalcon\Mvc\Model
         return parent::findFirst($parameters);
     }
 
-    public function beforeSave()
+    public function beforeValidationOnCreate()
     {
-        // 숫자만 남김
+        // 숫자만 남김. 프론트엔드에서 안내만 해주면 백엔드에서 오류 처리할 필요는 없을 것
         $this->cellphone = preg_replace('/[^0-9]/', '', $this->cellphone);
     }
     
@@ -144,7 +144,7 @@ class User extends \Phalcon\Mvc\Model
         // 영문 대문자, 영문 소문자, 특수 문자, 숫자 각 1개 이상씩 포함
         if (preg_match('/[A-Z]/', $pw) === false
             || preg_match('/[a-z]/', $pw) === false
-            || preg_match('/[A-Z]/', $pw) === false
+            || preg_match('/[`~!@#$%^&*()\-=_+{}[]\\\|:;\'",\.<>\/\?/', $pw) === false
             || preg_match('/[0-9]/', $pw) === false
         ) {
             return false;
@@ -154,5 +154,12 @@ class User extends \Phalcon\Mvc\Model
             return false;
         }
         return true;
+    }
+
+    public function jsonSerialize(): array
+    {
+        $obj = parent::jsonSerialize();
+        unset($obj['password']);
+        return $obj;
     }
 }

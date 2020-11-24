@@ -20,11 +20,12 @@ class UserController extends \Phalcon\Mvc\Controller
         $password_again = $this->request->getPost('password2', 'string', '');
         $cellphone = $this->request->getPost('cellphone', 'string');
         $email = $this->request->getPost('email', 'email');
+        $gender = $this->request->getPost('gender', 'string');
 
         $password = trim($password);
         $password_again = trim($password_again);
         if (!User::passwordSanity($password)
-            || strcmp($password, $password_again) === 0
+            || strcmp($password, $password_again) !== 0
         ) {
             $this->response->setStatusCode(400, 'Bad Request');
             return $this->response->setJsonContent(['status' => 'fail', 'message' => 'wrong password']);
@@ -36,15 +37,19 @@ class UserController extends \Phalcon\Mvc\Controller
         $user->password = $this->security->hash($password);
         $user->cellphone = $cellphone;
         $user->email = $email;
+        $user->gender = $gender;
 
         if (!$user->save()) {
             $messages = $user->getMessages();
-            $message = array_shift($messages) ?: '';
+            $message = array_shift($messages);
+            if ($message) {
+                $message = $message->getMessage();
+            }
             $this->response->setStatusCode(400, 'Bad Request');
-            return $this->response->setJsonContent(['status' => 'fail', 'message' => $message]);
+            return $this->response->setJsonContent(['status' => 'fail', 'message' => $message ?: 'unknown error']);
         }
 
-        return $this->response->setJsonContent($user);
+        return $this->response->setJsonContent(['status' => 'ok', 'user' => $user]);
     }
 
     /**
@@ -79,7 +84,13 @@ class UserController extends \Phalcon\Mvc\Controller
     public function indexAction()
     {
         $page = $this->request->get('page', 'int', 1, true);
-        $limit = 10;
+        $limit = $this->request->get('limit', 'int', 10, true);
+        if ($page < 1) {
+            $page = 1;
+        }
+        if ($limit < 1 || $limit > 100) {
+            $limit = 10;
+        }
         $offset = ($page - 1) * $limit;
 
         // 이름, 이메일 검색
@@ -87,22 +98,40 @@ class UserController extends \Phalcon\Mvc\Controller
         $email = $this->request->get('email', 'email');
 
         if ($name) {
-            $conditions[] = "name = :name:";
-            $binds['name'] = $name;
+            $conditions[] = "name like :name_like:";
+            $binds['name_like'] = '%'.$name.'%';
+            $bind_types['name_like'] = \Phalcon\Db\Column::BIND_PARAM_STR;
         }
         if ($email) {
-            $conditions[] = "email = :email:";
-            $binds['email'] = $email;
+            $conditions[] = "email like :email_like:";
+            $binds['email_like'] = '%'.$email.'%';
+            $bind_types['email_like'] = \Phalcon\Db\Column::BIND_PARAM_STR;
         }
-        if (isset($conditions, $binds)) {
-            $users = User::find([
-                'conditions' => $conditions,
-                'bind' => $binds,
-                'limit' => ['number' => $limit, 'offset' => $offset],
-            ]);
+        if (isset($conditions, $binds, $bind_types)) {
+            $params['conditions'] = implode(' and ', $conditions); // passing array trigger "SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens"
+            $params['bind'] = $binds;
+            $params['bindTypes'] = $bind_types;
         }
 
-        return $this->response->setJsonContent(['status' => 'ok', 'users' => $users ?? []]);
+        $params['order'] = 'user_id desc';
+        $params['limit'] = $limit;
+        $params['offset'] = $offset;
+
+        $users = User::find($params);
+        $userlist = [];
+        foreach ($users as $user) {
+            // FIXME: 개인정보 공개 범위 조정 필요, 혹은 상위권한 별도 검사
+            $arr = [];
+            $arr['user_id'] = $user->user_id;
+            $arr['email'] = $user->email;
+            $arr['name'] = $user->name;
+            $arr['nickname'] = $user->nickname;
+            $arr['last_order'] = Order::getLastOrder($user);
+            $userlist[] = $arr;
+        }
+
+        // TODO: 전후 페이지 존재 여부 추가? prev-next url, current page
+        return $this->response->setJsonContent(['status' => 'ok', 'users' => $userlist]);
     }
 
 }

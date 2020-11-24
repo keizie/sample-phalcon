@@ -76,4 +76,14 @@ class Order extends \Phalcon\Mvc\Model
             $this->oid = strtoupper($body.$tail);
         }
     }
+
+    public static function getLastOrder(User $user): ?self
+    {
+        $order = self::findFirst([
+            'conditions' => "user_id = {$user->user_id}",
+            'order' => "order_id desc",
+            'limit' => 1
+        ]);
+        return $order ?? null;
+    }
 }
