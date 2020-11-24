@@ -1,5 +1,7 @@
 <?php
 
+use Phalcon\Mvc\ModelInterface;
+
 class Order extends \Phalcon\Mvc\Model
 {
 
@@ -59,7 +61,7 @@ class Order extends \Phalcon\Mvc\Model
      * @param mixed $parameters
      * @return Order|\Phalcon\Mvc\Model\ResultInterface
      */
-    public static function findFirst($parameters = null)
+    public static function findFirst($parameters = null): ?ModelInterface
     {
         return parent::findFirst($parameters);
     }
